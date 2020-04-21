@@ -26,10 +26,11 @@ const Profile = props => {
 
   const classes = useStyles();
 
+  //name: localStorage.getItem('email_usuario_logado'),
   const user = {
-    name: 'Shen Zhi',
-    avatar: '/images/avatars/avatar_11.png',
-    bio: 'Brain Director'
+    name: 'Ricardo Rodrigues',
+    avatar: '/images/avatars/Gatissimo.png',
+    bio: 'Manager development'
   };
 
   return (
