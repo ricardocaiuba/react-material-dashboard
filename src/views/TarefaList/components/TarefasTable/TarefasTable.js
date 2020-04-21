@@ -10,8 +10,12 @@ import {
   TableBody,
   TableCell,
   TableHead,
-  TableRow
+  TableRow,
+  IconButton
 } from '@material-ui/core';
+import TimerIcon from '@material-ui/icons/Timer';
+import DoneAllIcon from '@material-ui/icons/DoneAll';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -34,7 +38,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const TarefasTable = props => {
-  const { className, tarefas, ...rest } = props;
+  const { className, tarefas, alterarStatus, deletarTarefa, ...rest } = props;
 
   const classes = useStyles();
 
@@ -53,9 +57,35 @@ const TarefasTable = props => {
                   <TableCell>Descrição</TableCell>
                   <TableCell>Categoria</TableCell>
                   <TableCell>Status</TableCell>
+                  <TableCell>Ações</TableCell>
                 </TableRow>
               </TableHead>
-              <TableBody />
+              <TableBody>
+                {tarefas.map(t => {
+                  return (
+                    <TableRow key={t.id}>
+                      <TableCell>{t.id}</TableCell>
+                      <TableCell>{t.descricao}</TableCell>
+                      <TableCell>{t.categoria}</TableCell>
+                      <TableCell>{t.done ? 'Feito' : 'Pendente'}</TableCell>
+                      <TableCell>
+                        <IconButton
+                          color="secondary"
+                          onClick={() => props.alterarStatus(t.id)}
+                        >
+                          {t.done ? <DoneAllIcon /> : <TimerIcon />}
+                        </IconButton>
+                        <IconButton
+                          color="secondary"
+                          onClick={() => props.deletarTarefa(t.id)}
+                        >
+                          <DeleteIcon style={{ color: '#848484' }} />
+                        </IconButton>
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
             </Table>
           </div>
         </PerfectScrollbar>
