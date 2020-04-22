@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   quote: {
-    backgroundColor: theme.palette.neutral,
+    backgroundColor: theme.palette.silver,
     height: '100%',
     display: 'flex',
     justifyContent: 'center',
@@ -38,10 +38,10 @@ const useStyles = makeStyles(theme => ({
   },
   name: {
     marginTop: theme.spacing(3),
-    color: theme.palette.white
+    color: theme.palette.silver
   },
   bio: {
-    color: theme.palette.white
+    color: theme.palette.silver
   },
   contentContainer: {},
   content: {
